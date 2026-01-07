@@ -1,0 +1,33 @@
+<?php
+
+namespace App\Providers;
+
+use App\Repositories\PostRepositoryInterface;
+use App\Repositories\UserRepositoryInterface;
+use App\Repositories\CommentRepositoryInterface;
+use App\Repositories\PostRepository;
+use App\Repositories\UserRepository;
+use App\Repositories\CommentRepository;
+use Illuminate\Support\ServiceProvider;
+
+class AppServiceProvider extends ServiceProvider
+{
+    /**
+     * Register any application services.
+     */
+    public function register(): void
+    {
+        // Bind Repository interfaces to implementations
+        $this->app->bind(PostRepositoryInterface::class, PostRepository::class);
+        $this->app->bind(UserRepositoryInterface::class, UserRepository::class);
+        $this->app->bind(CommentRepositoryInterface::class, CommentRepository::class);
+    }
+
+    /**
+     * Bootstrap any application services.
+     */
+    public function boot(): void
+    {
+        //
+    }
+}
